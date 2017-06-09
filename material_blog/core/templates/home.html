@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div>welcome to epic blog. I am {{ request.user }}
+    <div>I have created {{ amount }} posts here</div>
+    <div>i have such categories:
+        {% for category in categories %}
+        <span>{{ category.name }}, </span>
+        {% endfor %}
+    </div>
+    here are some of the posts:<br>
+    {% for post in posts %}
+    <div>
+        <span>{{ post.title }}</span>
+        <div>{{ post.text }}</div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock content %}
