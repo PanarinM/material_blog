@@ -1,0 +1,5 @@
+/ENV
+*.pyc
+local_settings.py
+/material_blog/media
+/.idea
