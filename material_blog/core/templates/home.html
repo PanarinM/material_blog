@@ -12,7 +12,7 @@
     here are some of the posts:<br>
     {% for post in posts %}
     <div>
-        <span>{{ post.title }}</span>
+        <span><a href="{% url "certain_post" post_id=post.id%}">{{ post.title }}</a></span>
         <div>{{ post.text }}</div>
     </div>
     {% endfor %}

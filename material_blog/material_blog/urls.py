@@ -20,10 +20,12 @@ from django.conf import settings
 
 
 from core.views import HomeView
+from posts.views import PostView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^redactor/', include('redactor.urls')),
     url(r'^home/', HomeView.as_view(), name="home"),
+    url(r'^post/(?P<post_id>[\d]+)/', PostView.as_view(), name="certain_post"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
