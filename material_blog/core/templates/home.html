@@ -2,19 +2,20 @@
 
 {% block content %}
 
-<div>welcome to epic blog. I am {{ request.user }}
+welcome to epic blog. I am {{ request.user }}
     <div>I have created {{ amount }} posts here</div>
     <div>i have such categories:
         {% for category in categories %}
-        <span>{{ category.name }}, </span>
+            <span><a href="{% url 'certain_category' category_id=category.id %}">{{ category.name }}, </a></span>
         {% endfor %}
     </div>
     here are some of the posts:<br>
     {% for post in posts %}
     <div>
         <span><a href="{% url "certain_post" post_id=post.id%}">{{ post.title }}</a></span>
-        <div>{{ post.text }}</div>
+        <div>{{ post.text|safe }}</div>
     </div>
     {% endfor %}
 </div>
+
 {% endblock content %}

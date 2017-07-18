@@ -27,6 +27,7 @@ class BlogPost(models.Model):
     category = models.ForeignKey(Category, related_name="post_category")
     tags = models.ManyToManyField(InterestTag, related_name="post_tags", blank=True)
     date = models.DateTimeField(auto_now_add=True)
+    views = models.PositiveIntegerField(default=0)
 
     class Meta:
         unique_together = ("title", "author")

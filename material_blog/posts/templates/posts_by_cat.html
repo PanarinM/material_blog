@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div>this is posts in category {{ category.name }}:</div>
+    {% if posts|length == 0 %}
+        <div>there is no posts in this category yet!</div>
+    {% else %}
+        {% for post in posts %}
+            <div>
+                <h3><a href="{% url 'certain_post' post_id=post.id %}">{{ post.title }}</a></h3>
+                <h6>
+                    <span>{{ post.author }}</span>
+                    <span>{{ post.date }}</span>
+                    <span>{{ post.tags }}</span>
+                </h6>
+                <div>
+                    {{ post.text|safe }}
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endblock content %}

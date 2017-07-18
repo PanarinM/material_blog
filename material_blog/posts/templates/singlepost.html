@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
 {% block content %}
-     {{ object.name }}
-     {{ object.text }}
+    <div><h3>{{ object.title }}</h3></div>
+    <div>{{ object.text|safe }}</div>
 {% endblock %}
