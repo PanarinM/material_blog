@@ -1,21 +1,24 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-welcome to epic blog. I am {{ request.user }}
-    <div>I have created {{ amount }} posts here</div>
-    <div>i have such categories:
-        {% for category in categories %}
-            <span><a href="{% url 'certain_category' category_id=category.id %}">{{ category.name }}, </a></span>
+    {%  if not request.user.is_authenticated %}
+        you are not logged in, <a href="{% url 'login' %}?next={{ request.path }}">please do!</a> <a href="{% url 'register' %}?next={{ request.path }}">Or, you can register instead!</a>
+    {% else %}
+        welcome to epic blog. I am <a href="{% url 'user_profile' %}">{{ request.user }}</a> (<a href="{% url 'logout' %}?next={{ request.path }}">logout</a>)
+        <div>I have created {{ amount }} posts here</div>
+        <div>i have such categories:
+            {% for category in categories %}
+                <span><a href="{% url 'certain_category' category_id=category.id %}">{{ category.name }}</a>, </span>
+            {% endfor %}
+        </div>
+        here are some of the posts:<br>
+        {% for post in posts %}
+            <div>
+                <span><a href="{% url "certain_post" post_id=post.id%}">{{ post.title }}</a></span>
+                <div>{{ post.text|safe }}</div>
+            </div>
         {% endfor %}
-    </div>
-    here are some of the posts:<br>
-    {% for post in posts %}
-    <div>
-        <span><a href="{% url "certain_post" post_id=post.id%}">{{ post.title }}</a></span>
-        <div>{{ post.text|safe }}</div>
-    </div>
-    {% endfor %}
-</div>
+        </div>
+    {% endif %}
 
 {% endblock content %}

@@ -20,13 +20,12 @@ from django.conf import settings
 
 
 from core.views import HomeView
-from posts.views import PostView, PostsByCat
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^redactor/', include('redactor.urls')),
     url(r'^home/', HomeView.as_view(), name="home"),
-    url(r'^post/(?P<post_id>[\d]+)/', PostView.as_view(), name="certain_post"),
-    url(r'^category/(?P<category_id>[\d]+)/', PostsByCat.as_view(), name="certain_category"),
+    url(r'^posts/', include('posts.urls')),
+    url(r'^users/', include('users.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
