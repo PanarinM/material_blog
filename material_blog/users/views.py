@@ -60,7 +60,7 @@ class LogIn(View):
         if request.user.is_authenticated():
             return HttpResponseRedirect(next_)
         form = UserLoginForm(request.POST)
-        if request.POST and form.is_valid():
+        if form.is_valid():
             user = form.login(request)
             if user:
                 login(request, user)

@@ -1,11 +1,50 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <form action="{% url 'login' %}?next={{ next }}" method="post" class="form">
-        {% csrf_token %}
-        {{ login_form.as_p }}
-        <button type="submit" class="btn btn-primary">
-            Submit
-        </button>
-    </form>
+    {% load widget_tweaks %}
+    <div class="conatiner">
+        <div class="row">
+            <form action="{% url 'login' %}?next={{ next }}" method="post" class="col s12">
+                {% csrf_token %}
+                {% if login_form.non_field_errors %}
+                    {% for error in login_form.non_field_errors %}
+                        <div class="row">
+                            <div class="card-panel red lighten-2 col s3 white-text">{{ error|escape }}</div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                <div class="row">
+                    <div class="input-field col s3">
+                        {% if login_form.username.errors %}
+                            {% for error in login_form.username.errors %}
+                                <div class="row">
+                                    <div class="card-panel red lighten-2 col s3 white-text">{{ error|escape }}</div>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                        {{ login_form.username.label_tag }}
+                        {{ login_form.username|attr:"type:text"|attr:"class:validate" }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s3">
+                        {% if login_form.password.errors %}
+                            {% for error in login_form.password.errors %}
+                                <div class="row">
+                                    <div class="card-panel red lighten-2 col s3 white-text">{{ error|escape }}</div>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                        {{ login_form.password.label_tag }}
+                        {{ login_form.password|attr:"type:password"|attr:"class:validate" }}
+                    </div>
+                </div>
+                <div class="row">
+                    <button type="submit" class="btn btn-primary inline">
+                        Submit
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
 {% endblock content%}

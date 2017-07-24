@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     #3-rd party
     'redactor',
     'solo',
+    'widget_tweaks',
 
     #myapps
     'users',
