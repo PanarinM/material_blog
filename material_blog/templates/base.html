@@ -11,6 +11,7 @@
 <body>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/myjs.js' %}"></script>
 
 
 {% block header %}
@@ -22,20 +23,11 @@
             <li><a href="#!">three</a></li>
         </ul>
         <nav>
-            <div class="nav-wrapper teal lighten-2">
+            <div class="nav-wrapper teal lighten-1">
                 <a href="#!" class="brand-logo">Logo</a>
-                <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">
-                    <li><a href="{% url 'home' %}">Home</a></li>
-                    <li><a href="badges.html">Components</a></li>
-                    <li><a href="collapsible.html">Javascript</a></li>
-                    <!-- Dropdown Trigger -->
-                    <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li>
-                </ul>
-                <ul class="side-nav" id="mobile-demo">
                     <li><a href="sass.html">Sass</a></li>
                     <li><a href="badges.html">Components</a></li>
-                    <li><a href="collapsible.html">Javascript</a></li>
                     <!-- Dropdown Trigger -->
                     <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li>
                 </ul>
@@ -44,16 +36,21 @@
     </header>
 {% endblock header %}
 <main>
-    {% block menu %}
+    <div class="row">
+        <div class="col s3">
+            {% block menu %}
 
-    {% endblock menu %}
-
-    {% block content %}
-        content
-    {% endblock content %}
+            {% endblock menu %}
+        </div>
+        <div class="col s9">
+            {% block content %}
+                content
+            {% endblock content %}
+        </div>
+    </div>
 </main>
 {% block footer %}
-    <footer class="page-footer teal lighten-2">
+    <footer class="page-footer teal lighten-1">
         <div class="container">
             <div class="row">
                 <div class="col l6 s12">
