@@ -3,4 +3,4 @@
 local_settings.py
 /material_blog/media
 /.idea
-*.sqlite
+*.sqlite3

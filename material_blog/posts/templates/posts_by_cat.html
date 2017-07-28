@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-
 {% block content %}
     <div>this is posts in category {{ category.name }}:</div>
     {% if posts|length == 0 %}
@@ -19,9 +18,10 @@
                                             <i class="close material-icons">close</i>
                                           </div>
                                     {% endfor %}</span></div></h6></span>
-                            <a class="btn-floating halfway-fab waves-effect waves-light red pull-right teal lighten-1"><i class="material-icons">favorite</i></a>
+                            <button value="like" name="likebutton" class="btn-floating halfway-fab waves-effect waves-light red pull-right teal lighten-1" id="like"><i class="material-icons">favorite</i></button>
                         </div>
                         <div class="card-content">
+                            {{ post.likes }}
                             {{ post.text|safe|truncatechars:80 }}
                         </div>
                     </div>
