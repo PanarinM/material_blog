@@ -28,13 +28,16 @@ class BlogPost(models.Model):
     tags = models.ManyToManyField(InterestTag, related_name="post_tags", blank=True)
     date = models.DateTimeField(auto_now_add=True)
     views = models.PositiveIntegerField(default=0)
-    likes = models.PositiveIntegerField(default=0)
+    likes = models.ManyToManyField(User, blank=True, related_name="post_likes")
 
     class Meta:
         unique_together = ("title", "author")
 
     def __str__(self):
         return "{} {} {}".format(self.title, self.author, self.category)
+
+    def total_likes(self):
+        return self.likes.count()
 
 
 class BlogPostComment(models.Model):

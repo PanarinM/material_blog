@@ -2,20 +2,22 @@ $(document).ready(function() {
     $('select').material_select();
     $('.dropdown-button').dropdown({ hover: false });
     $('.chips').material_chip();
+
     $('#like').click(function(){
-        console.log('random message');
+            var this_ =  $(this);
+            var url_ = this_.attr("data-href");
         $.ajax({
-            type: "POST",
-            url: "{% url 'like' %}",
-            data: {'slug': $(this).attr('name'), 'csrfmiddlewaretoken': '{{ csrf_token }}'},
+            type: "get",
+            url: url_,
+            data: {'post_id': $(this).attr('name')},
             dataType: "json",
             success: function(response) {
                 alert(response.message);
-                alert('Company likes count is now ' + response.likes_count);
+                alert('Post likes count is now ' + response.likes_count);
             },
             error: function(rs, e) {
                 alert(rs.responseText);
             }
         });
-    });
+    })
 });
