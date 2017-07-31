@@ -21,7 +21,7 @@
                             <button data-href="{% url 'like' %}" value="like" name="{{ post.id }}" class="btn-floating halfway-fab waves-effect waves-light red pull-right teal lighten-1" id="like"><i class="material-icons">favorite</i></button>
                         </div>
                         <div class="card-content">
-                            {{ post.likes.count }}
+                            <div id="like_count">{{ post.likes.count }}</div>
                             {{ post.text|safe|truncatechars:80 }}
                         </div>
                     </div>
