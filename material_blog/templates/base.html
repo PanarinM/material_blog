@@ -7,13 +7,16 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="{% static 'css/materialize.min.css' %}"  media="screen,projection"/>
     <link type="text/css" rel="stylesheet" href="{% static 'css/mycss.css' %}"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.0/animate.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/myjs.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/ajax_likes.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/document_ready.js' %}"></script>
+
+{#<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>#}
+  <script type="text/javascript" src="{% static 'js/animatedModal.js' %}"></script>
 
 
 {% block header %}
@@ -44,7 +47,7 @@
 
             {% endblock menu %}
         </div>
-        <div class="col s9">
+        <div class="col s8">
             {% block content %}
                 content
             {% endblock content %}

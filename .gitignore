@@ -4,3 +4,4 @@ local_settings.py
 /material_blog/media
 /.idea
 *.sqlite3
+*.zip

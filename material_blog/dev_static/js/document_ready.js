@@ -3,20 +3,23 @@ $(document).ready(function() {
     $('.dropdown-button').dropdown({ hover: false });
     $('.chips').material_chip();
 
-    $('#like').click(function(){
-            var this_ =  $(this);
-            var url_ = $(this).attr("data-href");
+    $('#like').click(function () {
+        var this_ = $(this);
+        var url_ = $(this).attr("data-href");
         $.ajax({
             type: "get",
             url: url_,
             data: {'post_id': $(this).attr('name')},
             dataType: "json",
-            success: function(response) {
+            success: function (response) {
                 $("#like_count").html(response.likes_count);
             },
-            error: function(rs, e) {
+            error: function (rs, e) {
                 alert(rs.responseText);
             }
         });
     });
+
+    // $('.modal-trigger').leanModal();
+      $("#demo01").animatedModal();
 });
