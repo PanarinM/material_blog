@@ -3,16 +3,17 @@ $(document).ready(function() {
     $('.dropdown-button').dropdown({ hover: false });
     $('.chips').material_chip();
 
-    $('#like').click(function () {
+    $('.like').click(function () {
         var this_ = $(this);
         var url_ = $(this).attr("data-href");
         $.ajax({
             type: "get",
             url: url_,
+            object: $(this).attr('name'),
             data: {'post_id': $(this).attr('name')},
             dataType: "json",
             success: function (response) {
-                $("#like_count").html(response.likes_count);
+                $("#like_count"+this.object).html(response.likes_count);
             },
             error: function (rs, e) {
                 alert(rs.responseText);
@@ -20,6 +21,7 @@ $(document).ready(function() {
         });
     });
 
-    // $('.modal-trigger').leanModal();
-      $("#demo01").animatedModal();
+    $('.modal').modal();
+
+    // $(".animated_modal_open").animatedModal();
 });

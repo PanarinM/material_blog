@@ -39,7 +39,6 @@ class Like(View):
         return HttpResponse(json.dumps(ctx), content_type='application/json')
 
 
-
 class PostsByCat(View):
     def get(self, request, category_id):
         category = get_object_or_404(Category, pk=category_id)
