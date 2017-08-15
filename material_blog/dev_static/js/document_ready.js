@@ -14,6 +14,7 @@ $(document).ready(function() {
             dataType: "json",
             success: function (response) {
                 $("#like_count"+this.object).html(response.likes_count);
+                $("#like_count_modal"+this.object).html(response.likes_count);
             },
             error: function (rs, e) {
                 alert(rs.responseText);
@@ -21,7 +22,29 @@ $(document).ready(function() {
         });
     });
 
-    $('.modal').modal();
-
-    // $(".animated_modal_open").animatedModal();
+    $('.modal').modal({
+        init: function () {
+            this._super()
+        },
+        start: function () {
+            $('.like').click(function () {
+                var this_ = $(this);
+                var url_ = $(this).attr("data-href");
+                $.ajax({
+                    type: "get",
+                    url: url_,
+                    object: $(this).attr('name'),
+                    data: {'post_id': $(this).attr('name')},
+                    dataType: "json",
+                    success: function (response) {
+                        $("#like_count"+this.object).html(response.likes_count);
+                        $("#like_count_modal"+this.object).html(response.likes_count);
+                    },
+                    error: function (rs, e) {
+                        alert(rs.responseText);
+                    }
+                });
+            });
+        }
+    });
 });

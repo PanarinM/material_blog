@@ -1,6 +1,7 @@
 from django.db import models
 from users.models import User
 from redactor.fields import RedactorField
+from utils import get_file_path
 
 
 class Category(models.Model):
@@ -29,6 +30,7 @@ class BlogPost(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     views = models.PositiveIntegerField(default=0)
     likes = models.ManyToManyField(User, blank=True, related_name="post_likes")
+    background_img = models.ImageField(upload_to=get_file_path, default="../static/default_img/default_post.jpg")
 
     class Meta:
         unique_together = ("title", "author")

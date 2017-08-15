@@ -14,3 +14,12 @@ main {
     height: 100%;
     top: 0px !important;
 }
+
+@media (max-width: 500px) {
+    .resizetitle {
+        font-size: 15px;
+    }
+    .resizeadd {
+        font-size: 10px;
+    }
+}
